@@ -11,15 +11,6 @@ export default function Home() {
         <title>Casper & NextJS</title>
         <meta name="description" content="Casper and NextJS Example" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
-          rel="stylesheet"
-        ></link>
       </Head>
 
       <main className={styles.main}>
