@@ -1,14 +1,12 @@
-import { useEffect, useState, useContext } from "react";
+import * as React from "react";
+import { Context } from "../context";
 import logo from "../public/logo.png";
 import styles from "../styles/Home.module.css";
-import { getActivePublicKey } from "../services/casper";
-import { Context } from "../context";
-import Cookies from "js-cookie";
 
 // Next
-import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 // Mui
 import Grid from "@mui/material/Grid";
@@ -23,27 +21,8 @@ import { Alert } from "../components";
 export default function Home() {
   const router = useRouter();
 
-  const [showAlert, setShowAlert] = useState(false);
-  const { state, dispatch } = useContext(Context);
-
-  useEffect(() => {
-    const setPublicKey = async () => {
-      try {
-        const publicKey = await getActivePublicKey();
-
-        dispatch({
-          type: "ASSIGN_PUB_KEY",
-          payload: publicKey,
-        });
-        return Cookies.set("casper_pub_key", publicKey);
-      } catch (error) {
-        console.error(error.message);
-        return Cookies.set("casper_pub_key", "");
-      }
-    };
-
-    setPublicKey();
-  }, []);
+  const [showAlert, setShowAlert] = React.useState(false);
+  const { state } = React.useContext(Context);
 
   const handleClick = () => {
     if (!state.user) return setShowAlert(true);
@@ -52,13 +31,19 @@ export default function Home() {
 
   return (
     <Container className={styles.container}>
+      <Head>
+        <title>Casper & NextJS</title>
+        <meta name="description" content="Casper and NextJS Example" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <main className={styles.main}>
         <Grid container spacing={3}>
           <Alert
             open={showAlert}
             handleClose={() => setShowAlert(false)}
             title="Whoa there, hold on..."
-            message="Please unlock your CasperLabs Signer Vault before moving on."
+            message="Please unlock your CasperLabs Signer Vault and Sign In before moving on."
             btnText="Close"
           />
 
@@ -85,7 +70,7 @@ export default function Home() {
               <span role="img" alt="unlock">
                 🔓
               </span>{" "}
-              Unlock your CasperLabs Signer extension up there{" "}
+              Unlock your CasperLabs Signer extension{" "}
               <span role="img" alt="arrow">
                 ↗
               </span>{" "}
@@ -125,17 +110,16 @@ export default function Home() {
             <Typography variant="h4">
               Step 3.{" "}
               <span role="img" alt="refresh">
-                🔄
+                🔑
               </span>{" "}
-              Refresh your browser
+              Log in by clicking the padlock{" "}
+              <span role="img" alt="arrow">
+                ↗
+              </span>{" "}
             </Typography>
             <Typography variant="body1">
-              The padlock in the top right portion of the page should now be
-              unlocked
-            </Typography>
-            <Typography variant="body1">
-              (P.S. You can view your public account key by hovering over the
-              unlocked padlock)
+              The padlock should now be unlocked and your public account key can
+              be viewed by hovering over the padlock
             </Typography>
           </Grid>
 

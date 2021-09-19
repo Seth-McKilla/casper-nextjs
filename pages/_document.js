@@ -10,9 +10,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Casper & NextJS</title>
-          <meta name="description" content="Casper and NextJS Example" />
-          <link rel="icon" href="/favicon.ico" />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
