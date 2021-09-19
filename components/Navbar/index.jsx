@@ -5,12 +5,15 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import LockIcon from "@mui/icons-material/Lock";
 import Tooltip from "@mui/material/Tooltip";
 import logo from "../../public/logo.png";
 import styles from "./index.module.css";
+import { Context } from "../../context";
 
 export default function NavBar() {
+  const { state } = React.useContext(Context);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -27,11 +30,13 @@ export default function NavBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Casper & NextJS
           </Typography>
-          <Tooltip title="Connect to wallet">
-            <IconButton color="inherit">
-              <AccountBalanceWalletIcon />
-            </IconButton>
-          </Tooltip>
+          {state.user ? (
+            <Typography variant="body1">{state.user}</Typography>
+          ) : (
+            <Tooltip title="Unlock Casper Vault to continue">
+              <LockIcon />
+            </Tooltip>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

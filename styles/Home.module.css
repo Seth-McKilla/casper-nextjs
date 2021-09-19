@@ -23,6 +23,7 @@
   border-radius: 15%;
   background-color: rgba(0, 0, 0, 1);
   box-shadow: 0 10px 15px 0px rgba(0, 0, 0, 0.8);
+  width: 250px;
   animation: logo-float 5s ease-in-out infinite;
 }
 
