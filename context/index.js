@@ -1,11 +1,12 @@
-import { useState, useEffect, useReducer, createContext } from "react";
+import * as React from "react";
 import { user } from "./reducers/user";
+import Cookies from "js-cookie";
 
 const initialState = {
-  user: "",
+  user: Cookies.get("casper_pub_key") ? Cookies.get("casper_pub_key") : "",
 };
 
-const Context = createContext({});
+const Context = React.createContext({});
 
 const combineReducers =
   (...reducers) =>
@@ -17,7 +18,10 @@ const combineReducers =
 
 // context provider
 const Provider = ({ children }) => {
-  const [state, dispatch] = useReducer(combineReducers(user), initialState);
+  const [state, dispatch] = React.useReducer(
+    combineReducers(user),
+    initialState
+  );
   const value = { state, dispatch };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

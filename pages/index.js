@@ -3,6 +3,7 @@ import logo from "../public/logo.png";
 import styles from "../styles/Home.module.css";
 import { getActivePublicKey } from "../services/casper";
 import { Context } from "../context";
+import Cookies from "js-cookie";
 
 // Next
 import { useRouter } from "next/router";
@@ -34,8 +35,10 @@ export default function Home() {
           type: "ASSIGN_PUB_KEY",
           payload: publicKey,
         });
+        return Cookies.set("casper_pub_key", publicKey);
       } catch (error) {
         console.error(error.message);
+        return Cookies.set("casper_pub_key", "");
       }
     };
 
@@ -49,19 +52,13 @@ export default function Home() {
 
   return (
     <Container className={styles.container}>
-      <Head>
-        <title>Casper & NextJS</title>
-        <meta name="description" content="Casper and NextJS Example" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
         <Grid container spacing={3}>
           <Alert
             open={showAlert}
             handleClose={() => setShowAlert(false)}
-            title="Casper Vault Required"
-            message="Please signin to Casper Vault before continuing"
+            title="Whoa there, hold on..."
+            message="Please unlock your CasperLabs Signer Vault before moving on."
             btnText="Close"
           />
 
@@ -77,17 +74,68 @@ export default function Home() {
           </Grid>
 
           <Grid item xs={12} align="center">
-            <Typography variant="h3">
+            <Typography variant="h3" gutterBottom>
               Welcome to the Casper & NextJS Demo!
             </Typography>
           </Grid>
 
           <Grid item xs={12} align="center">
-            <Typography variant="h6">
-              Get started by connecting to your CasperLabs Signer{" "}
+            <Typography variant="h4">
+              Step 1.{" "}
+              <span role="img" alt="unlock">
+                🔓
+              </span>{" "}
+              Unlock your CasperLabs Signer extension up there{" "}
               <span role="img" alt="arrow">
                 ↗
-              </span>
+              </span>{" "}
+            </Typography>
+            <Typography variant="body1">
+              Don't have the CasperLabs Signer extension? No problem, grab it{" "}
+              <a
+                href="https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en"
+                target="_blank"
+              >
+                here
+              </a>
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} align="center">
+            <Typography variant="h4">
+              Step 2.{" "}
+              <span role="img" alt="plug">
+                🔌
+              </span>{" "}
+              Connect to this site through the extension
+            </Typography>
+            <Typography variant="body1">
+              Having trouble? Check out{" "}
+              <a
+                href="https://docs.casperlabs.io/en/latest/workflow/staking.html#creating-your-wallet-with-the-casperlabs-signer"
+                target="_blank"
+              >
+                this
+              </a>{" "}
+              resource for some detailed instructions
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} align="center">
+            <Typography variant="h4">
+              Step 3.{" "}
+              <span role="img" alt="refresh">
+                🔄
+              </span>{" "}
+              Refresh your browser
+            </Typography>
+            <Typography variant="body1">
+              The padlock in the top right portion of the page should now be
+              unlocked
+            </Typography>
+            <Typography variant="body1">
+              (P.S. You can view your public account key by hovering over the
+              unlocked padlock)
             </Typography>
           </Grid>
 
