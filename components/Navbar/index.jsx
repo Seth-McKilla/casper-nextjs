@@ -78,6 +78,7 @@ export default function NavBar() {
         message={error}
         btnText="Close"
       />
+
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar className={styles.nav}>
@@ -103,8 +104,15 @@ export default function NavBar() {
               <Tooltip
                 title={state.user ? `Public Key: ${state.user}` : "Signed out"}
               >
-                <IconButton color="inherit" onClick={handleMenu}>
-                  {state.user ? <LockOpenTwoToneIcon /> : <LockTwoToneIcon />}
+                <IconButton
+                  style={{ backgroundColor: "#fff" }}
+                  onClick={handleMenu}
+                >
+                  {state.user ? (
+                    <LockOpenTwoToneIcon style={{ color: "#50D890" }} />
+                  ) : (
+                    <LockTwoToneIcon style={{ color: "#FF0000" }} />
+                  )}
                 </IconButton>
               </Tooltip>
             )}
