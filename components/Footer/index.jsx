@@ -13,7 +13,7 @@ export default function Footer() {
         <a
           href="https://github.com/Seth-McKilla"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noreferrer"
         >
           Seth
         </a>

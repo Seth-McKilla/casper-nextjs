@@ -20,6 +20,7 @@ target
 .DS_Store
 *.pem
 notes.txt
+casper_keys
 
 # debug
 npm-debug.log*
