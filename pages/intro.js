@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 import { Context } from "../context";
 import styles from "../styles/Home.module.css";
 import { STATUS_API } from "../constants";
@@ -15,14 +16,23 @@ import Button from "@mui/material/Button";
 export default function Intro() {
   const { state } = React.useContext(Context);
   const [error, setError] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [networkName, setNetworkName] = React.useState("");
 
   const handleClick = async () => {
+    setLoading(true);
+    setError("");
+    setNetworkName("");
     try {
-      const statusResponse = await fetch(STATUS_API);
-      const json = await statusResponse.json();
-      setNetworkName(json.chainspec_name);
+      const { data } = await axios.get("http://142.93.231.242:8888/status");
+      setError("");
+      setNetworkName(data.chainspec_name);
+      setLoading(false);
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
+      setNetworkName("");
+      setError(error.message);
+      setLoading(false);
     }
   };
 
@@ -40,14 +50,21 @@ export default function Intro() {
         </Grid>
 
         <Grid item xs={12} align="center">
-          <Button variant="contained" size="large" onClick={handleClick}>
-            Connect
+          <Button
+            variant="contained"
+            size="large"
+            onClick={handleClick}
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Connect"}
           </Button>
         </Grid>
 
         {error && (
           <Grid item xs={12} align="center">
-            <Typography variant="body1">{error.message}</Typography>
+            <Typography variant="body1" color="error">
+              {`Error: ${error}`}
+            </Typography>
           </Grid>
         )}
       </Grid>
