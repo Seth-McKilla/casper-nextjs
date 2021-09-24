@@ -24,7 +24,7 @@ export default function Intro() {
     setError("");
     setNetworkName("");
     try {
-      const { data } = await axios.get("http://142.93.231.242:8888/status");
+      const { data } = await axios.get("http://178.18.251.117:7777/status");
       setError("");
       setNetworkName(data.chainspec_name);
       setLoading(false);
@@ -46,7 +46,9 @@ export default function Intro() {
 
       <Grid container spacing={2}>
         <Grid item xs={12} align="center">
-          <Typography variant="h4">Now let's connect to the network</Typography>
+          <Typography variant="h4">
+            {"Now let's connect to the network"}
+          </Typography>
         </Grid>
 
         <Grid item xs={12} align="center">

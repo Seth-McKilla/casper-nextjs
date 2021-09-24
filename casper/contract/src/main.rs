@@ -45,7 +45,7 @@ pub extern "C" fn call() {
     entry_points.add_entry_point(endpoint("store_string", CLType::String));
 
     let (contract_hash, _) =
-        storage::add_contract_version(contract_package_hash, entry_points, Default::default());
+    storage::add_contract_version(contract_package_hash, entry_points, Default::default());
     runtime::put_key("kvstorage_contract", contract_hash.into());
     let contract_hash_pack = storage::new_uref(contract_hash);
     runtime::put_key("kvstorage_contract_hash", contract_hash_pack.into())
