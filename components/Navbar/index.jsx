@@ -7,6 +7,7 @@ import { getActivePublicKey } from "../../services/casper";
 
 // Next
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 // Mui
@@ -16,10 +17,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import LockTwoToneIcon from "@mui/icons-material/LockTwoTone";
-import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 // Components
 import { Alert } from "..";
@@ -30,7 +31,6 @@ export default function NavBar() {
   const [showAlert, setShowAlert] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
     setMounted(true);
@@ -40,18 +40,7 @@ export default function NavBar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuItem = async () => {
-    if (state.user) {
-      dispatch({
-        type: "ASSIGN_PUB_KEY",
-        payload: "",
-      });
-
-      Cookies.remove("casper_pub_key");
-      setAnchorEl(null);
-      return router.push("/");
-    }
-
+  const handleLogin = async () => {
     try {
       const publicKey = await getActivePublicKey();
 
@@ -59,14 +48,22 @@ export default function NavBar() {
         type: "ASSIGN_PUB_KEY",
         payload: publicKey,
       });
-      Cookies.set("casper_pub_key", publicKey, { expires: 7 });
-      return setAnchorEl(null);
+      return Cookies.set("casper_pub_key", publicKey, { expires: 7 });
     } catch (error) {
       console.error(error.message);
-      setError(error.message);
-      setAnchorEl(null);
       return setShowAlert(true);
     }
+  };
+
+  const handleLogout = async () => {
+    dispatch({
+      type: "ASSIGN_PUB_KEY",
+      payload: "",
+    });
+
+    Cookies.remove("casper_pub_key");
+    setAnchorEl(null);
+    return router.push("/");
   };
 
   return (
@@ -74,10 +71,20 @@ export default function NavBar() {
       <Alert
         open={showAlert}
         handleClose={() => setShowAlert(false)}
-        title="Uh oh..."
-        message={error}
+        title="Please connect to CasperLabs Signer"
         btnText="Close"
-      />
+      >
+        <Typography variant="body1">
+          Need help setting up the CasperLabs Signer extension? The setup
+          instructions can be found{" "}
+          <Link
+            href="https://docs.casperlabs.io/en/latest/workflow/staking.html#creating-your-wallet-with-the-casperlabs-signer"
+            target="__blank"
+          >
+            here.
+          </Link>
+        </Typography>
+      </Alert>
 
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
@@ -101,20 +108,27 @@ export default function NavBar() {
               Casper & NextJS
             </Typography>
             {mounted && (
-              <Tooltip
-                title={state.user ? `Public Key: ${state.user}` : "Signed out"}
-              >
-                <IconButton
-                  style={{ backgroundColor: "#fff" }}
-                  onClick={handleMenu}
+              <div className={styles.account}>
+                <Tooltip
+                  title={
+                    state.user ? `Public Key: ${state.user}` : "Signed out"
+                  }
                 >
                   {state.user ? (
-                    <LockOpenTwoToneIcon style={{ color: "#50D890" }} />
+                    <IconButton onClick={handleMenu}>
+                      <AccountCircleIcon color="secondary" />
+                    </IconButton>
                   ) : (
-                    <LockTwoToneIcon style={{ color: "#FF0000" }} />
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={handleLogin}
+                    >
+                      Log in
+                    </Button>
                   )}
-                </IconButton>
-              </Tooltip>
+                </Tooltip>
+              </div>
             )}
             <Menu
               id="menu-appbar"
@@ -131,7 +145,7 @@ export default function NavBar() {
               open={!!anchorEl}
               onClose={() => setAnchorEl(null)}
             >
-              <MenuItem onClick={handleMenuItem}>
+              <MenuItem onClick={handleLogout}>
                 {mounted && (
                   <Typography>{state.user ? "LOG OUT" : "LOG IN"}</Typography>
                 )}

@@ -43,9 +43,13 @@ export default function Home() {
             open={showAlert}
             handleClose={() => setShowAlert(false)}
             title="Whoa there, hold on..."
-            message="Please unlock your CasperLabs Signer Vault and Sign In before moving on."
             btnText="Close"
-          />
+          >
+            <Typography variant="body1">
+              Please unlock your CasperLabs Signer Vault and Sign In before
+              moving on.
+            </Typography>
+          </Alert>
 
           <Grid item xs={12} align="center">
             <div className={styles.logo}>
@@ -59,12 +63,12 @@ export default function Home() {
           </Grid>
 
           <Grid item xs={12} align="center">
-            <Typography variant="h3">{"Casper & NextJS Demo"}</Typography>
+            <Typography variant="h3">Casper & NextJS Demo</Typography>
           </Grid>
 
           <Grid item xs={12} align="center">
             <Typography variant="h4">
-              {"Logging in is as easy as 1, 2, 3..."}
+              Logging in is as easy as 1, 2, 3...
             </Typography>
           </Grid>
 
@@ -73,11 +77,11 @@ export default function Home() {
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <Typography variant="h6">
-                    {"1. "}
+                    1.
                     <span role="img" alt="unlock">
                       🔓
                     </span>
-                    {" Unlock your CasperLabs Signer extension "}
+                    Unlock your CasperLabs Signer extension
                     <span role="img" alt="arrow">
                       ↗
                     </span>
@@ -91,21 +95,21 @@ export default function Home() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {"here"}
+                      here
                     </a>
                   </Typography>
                 </Grid>
 
                 <Grid item xs={12}>
                   <Typography variant="h6">
-                    {"2. "}
+                    2.
                     <span role="img" alt="plug">
                       🔌
                     </span>
-                    {"Connect to this site through the extension"}
+                    Connect to this site through the extension
                   </Typography>
                   <Typography variant="body1">
-                    {"Having trouble? Check out "}
+                    Having trouble? Check out{" "}
                     <a
                       href="https://docs.casperlabs.io/en/latest/workflow/staking.html#creating-your-wallet-with-the-casperlabs-signer"
                       target="_blank"
@@ -113,13 +117,13 @@ export default function Home() {
                     >
                       this
                     </a>
-                    {" resource for some detailed instructions"}
+                    resource for some detailed instructions
                   </Typography>
                 </Grid>
 
                 <Grid item xs={12}>
                   <Typography variant="h6">
-                    {"3. "}
+                    3.
                     <span role="img" alt="refresh">
                       🔑
                     </span>
@@ -129,9 +133,8 @@ export default function Home() {
                     </span>
                   </Typography>
                   <Typography variant="body1">
-                    {
-                      "The padlock should now be unlocked and your public account key can be viewed by hovering over the padlock"
-                    }
+                    The padlock should now be unlocked and your public account
+                    key can be viewed by hovering over the padlock
                   </Typography>
                 </Grid>
 
