@@ -16,13 +16,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 // Components
-import { Alert } from "..";
+import { Alert, ButtonClick, NavLinks } from "..";
 
 export default function NavBar() {
   const router = useRouter();
@@ -61,8 +60,7 @@ export default function NavBar() {
     });
 
     Cookies.remove("casper_pub_key");
-    setAnchorEl(null);
-    return router.push("/");
+    return setAnchorEl(null);
   };
 
   return (
@@ -108,25 +106,15 @@ export default function NavBar() {
             </Typography>
             {mounted && (
               <div>
-                <Tooltip
-                  title={
-                    state.user ? `Public Key: ${state.user}` : "Signed out"
-                  }
-                >
-                  {state.user ? (
-                    <IconButton onClick={handleMenu}>
-                      <AccountCircleIcon color="secondary" />
+                {state.user ? (
+                  <Tooltip title={`Public Key: ${state.user}`}>
+                    <IconButton onClick={handleMenu} sx={{ color: "#ffffff" }}>
+                      <AccountCircleIcon />
                     </IconButton>
-                  ) : (
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      onClick={handleLogin}
-                    >
-                      Log in
-                    </Button>
-                  )}
-                </Tooltip>
+                  </Tooltip>
+                ) : (
+                  <ButtonClick onClick={handleLogin} text="Log In" />
+                )}
               </div>
             )}
             <Menu
@@ -152,6 +140,7 @@ export default function NavBar() {
             </Menu>
           </Toolbar>
         </AppBar>
+        <NavLinks />
       </Box>
     </>
   );

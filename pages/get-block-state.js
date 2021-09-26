@@ -6,15 +6,18 @@ import Head from "next/head";
 // Mui
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 
 // Components
-import { Container, DisplayJSON, GetBlockStateTutorial } from "../components";
+import {
+  ButtonClick,
+  Container,
+  DisplayJSON,
+  GetBlockStateTutorial,
+} from "../components";
 
 export default function GetBlockState() {
   const [loading, setLoading] = React.useState(false);
   const [response, setResponse] = React.useState("");
-  const [showTutorialSection, setShowTutorialSection] = React.useState(false);
   const [showTutorial, setShowTutorial] = React.useState(false);
 
   const handleClick = async () => {
@@ -23,7 +26,6 @@ export default function GetBlockState() {
       const response = await fetch("/api/get-block-state");
       const { blockState } = await response.json();
       setResponse(JSON.stringify(blockState));
-      setShowTutorialSection(true);
       return setLoading(false);
     } catch (err) {
       console.log(err);
@@ -47,20 +49,24 @@ export default function GetBlockState() {
 
       <Grid container spacing={2}>
         <Grid item xs={12} align="center">
-          <Typography variant="h4">
-            {"Let's start off by getting the current block state..."}
-          </Typography>
+          <Typography variant="h2">Get Block State</Typography>
         </Grid>
 
-        <Grid item xs={12} align="center">
-          <Button
-            variant="contained"
-            size="large"
+        <Grid
+          container
+          item
+          xs={12}
+          justifyContent="space-around"
+          alignItems="center"
+        >
+          <Typography variant="h5">
+            {"Let's start off by fetching the current block state..."}
+          </Typography>
+          <ButtonClick
+            text={loading ? "Loading..." : "Fetch block state"}
             onClick={handleClick}
             disabled={loading}
-          >
-            {loading ? "Loading..." : "Get block state"}
-          </Button>
+          />
         </Grid>
 
         <Grid item xs={12}>
@@ -71,20 +77,21 @@ export default function GetBlockState() {
           />
         </Grid>
 
-        {showTutorialSection && (
-          <Grid container item xs={12} justifyContent="center">
-            <Typography variant="h4" mr={3}>
-              Check out how that was done!
-            </Typography>
-            <Button
-              variant="contained"
-              size="large"
-              onClick={() => setShowTutorial(true)}
-            >
-              View code
-            </Button>
-          </Grid>
-        )}
+        <Grid
+          container
+          item
+          xs={12}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Typography variant="h5" mr={3}>
+            Check out how this is done!
+          </Typography>
+          <ButtonClick
+            text="</> View Code"
+            onClick={() => setShowTutorial(true)}
+          />
+        </Grid>
       </Grid>
     </Container>
   );

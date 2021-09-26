@@ -6,10 +6,10 @@ export default createTheme({
   },
   palette: {
     primary: {
-      main: "#C84B31",
+      main: "#ff4e00",
     },
     secondary: {
-      main: "#ECDBBA",
+      main: "#ec9f05",
     },
   },
   components: {
@@ -24,7 +24,7 @@ export default createTheme({
         color: inherit;
         text-decoration: none;
         font-weight: 600;
-        color: #c84b31;
+        color: #ff4e00;
       }
       * {
         box-sizing: border-box;
