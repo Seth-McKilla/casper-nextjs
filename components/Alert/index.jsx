@@ -18,12 +18,14 @@ export default function Alert({ open, handleClose, title, btnText, children }) {
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
+        maxWidth="md"
+        fullWidth
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle variant="h4">{title}</DialogTitle>
         <DialogContent>{children}</DialogContent>
-        <DialogActions>
-          <Button variant="contained" onClick={handleClose}>
+        <DialogActions style={{ padding: 24 }}>
+          <Button variant="contained" size="large" onClick={handleClose}>
             {btnText}
           </Button>
         </DialogActions>

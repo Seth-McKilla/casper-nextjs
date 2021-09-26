@@ -26,11 +26,11 @@ export default function Home() {
 
   const handleClick = () => {
     if (!state.user) return setShowAlert(true);
-    return router.push("/intro");
+    return router.push("/get-block-state");
   };
 
   return (
-    <Container className={styles.container} maxWidth="sm">
+    <Container className={styles.container} maxWidth="md">
       <Head>
         <title>Casper & NextJS</title>
         <meta name="description" content="Casper and NextJS Example" />
@@ -38,7 +38,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Grid container spacing={2}>
+        <Grid container spacing={3} align="center">
           <Alert
             open={showAlert}
             handleClose={() => setShowAlert(false)}
@@ -51,7 +51,7 @@ export default function Home() {
             </Typography>
           </Alert>
 
-          <Grid item xs={12} align="center">
+          <Grid item xs={12}>
             <div className={styles.logo}>
               <Image
                 width={250}
@@ -62,93 +62,83 @@ export default function Home() {
             </div>
           </Grid>
 
-          <Grid item xs={12} align="center">
+          <Grid item xs={12}>
             <Typography variant="h3">Casper & NextJS Demo</Typography>
           </Grid>
 
-          <Grid item xs={12} align="center">
-            <Typography variant="h4">
+          <Grid item xs={12}>
+            <Typography variant="h4" gutterBottom>
               Logging in is as easy as 1, 2, 3...
             </Typography>
           </Grid>
 
           <Grid item xs={12}>
-            <Container maxWidth="sm">
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <Typography variant="h6">
-                    1.
-                    <span role="img" alt="unlock">
-                      🔓
-                    </span>
-                    Unlock your CasperLabs Signer extension
-                    <span role="img" alt="arrow">
-                      ↗
-                    </span>
-                  </Typography>
-                  <Typography variant="body1">
-                    {
-                      "Don't have the CasperLabs Signer extension? No problem, grab it "
-                    }
-                    <a
-                      href="https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      here
-                    </a>
-                  </Typography>
-                </Grid>
+            <Typography variant="h5">
+              1.
+              <span role="img" alt="unlock">
+                🔓
+              </span>
+              Unlock your CasperLabs Signer extension
+              <span role="img" alt="arrow">
+                ↗
+              </span>
+            </Typography>
+            <Typography variant="body1">
+              {
+                "Don't have the CasperLabs Signer extension? No problem, grab it "
+              }
+              <a
+                href="https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en"
+                target="_blank"
+                rel="noreferrer"
+              >
+                here
+              </a>
+            </Typography>
+          </Grid>
 
-                <Grid item xs={12}>
-                  <Typography variant="h6">
-                    2.
-                    <span role="img" alt="plug">
-                      🔌
-                    </span>
-                    Connect to this site through the extension
-                  </Typography>
-                  <Typography variant="body1">
-                    Having trouble? Check out{" "}
-                    <a
-                      href="https://docs.casperlabs.io/en/latest/workflow/staking.html#creating-your-wallet-with-the-casperlabs-signer"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      this
-                    </a>
-                    resource for some detailed instructions
-                  </Typography>
-                </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h5">
+              2.
+              <span role="img" alt="plug">
+                🔌
+              </span>
+              Connect to this site through the extension
+            </Typography>
+            <Typography variant="body1">
+              Having trouble? Check out{" "}
+              <a
+                href="https://docs.casperlabs.io/en/latest/workflow/staking.html#creating-your-wallet-with-the-casperlabs-signer"
+                target="_blank"
+                rel="noreferrer"
+              >
+                this
+              </a>
+              resource for some detailed instructions
+            </Typography>
+          </Grid>
 
-                <Grid item xs={12}>
-                  <Typography variant="h6">
-                    3.
-                    <span role="img" alt="refresh">
-                      🔑
-                    </span>
-                    {"Log in by clicking the padlock and selecting 'Log In' "}
-                    <span role="img" alt="arrow">
-                      ↗
-                    </span>
-                  </Typography>
-                  <Typography variant="body1">
-                    The padlock should now be unlocked and your public account
-                    key can be viewed by hovering over the padlock
-                  </Typography>
-                </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h5">
+              3.
+              <span role="img" alt="refresh">
+                🔑
+              </span>
+              {"Log in by clicking the padlock and selecting 'Log In' "}
+              <span role="img" alt="arrow">
+                ↗
+              </span>
+            </Typography>
+            <Typography variant="body1">
+              The padlock should now be unlocked and your public account key can
+              be viewed by hovering over the padlock
+            </Typography>
+          </Grid>
 
-                <Grid item xs={12} align="center">
-                  <Button
-                    variant="contained"
-                    size="large"
-                    onClick={handleClick}
-                  >
-                    Continue <ArrowForwardIosIcon />
-                  </Button>
-                </Grid>
-              </Grid>
-            </Container>
+          <Grid item xs={12}>
+            <Button variant="contained" size="large" onClick={handleClick}>
+              Continue <ArrowForwardIosIcon />
+            </Button>
           </Grid>
         </Grid>
       </main>

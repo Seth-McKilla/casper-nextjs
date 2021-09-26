@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 import logo from "../../public/logo.png";
 import { Context } from "../../context";
 import Cookies from "js-cookie";
-import { getActivePublicKey } from "../../services/casper";
+import { Signer } from "casper-js-sdk";
 
 // Next
 import Image from "next/image";
@@ -42,7 +42,7 @@ export default function NavBar() {
 
   const handleLogin = async () => {
     try {
-      const publicKey = await getActivePublicKey();
+      const publicKey = await Signer.getActivePublicKey();
 
       dispatch({
         type: "ASSIGN_PUB_KEY",
