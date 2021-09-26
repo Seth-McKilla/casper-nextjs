@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   const { fromAddrHex, string } = req.body;
 
-  export const getStatus = async () => {
+  const getStatus = async () => {
     try {
       const response = await fetch(STATUS_API);
       const status = response.json();
