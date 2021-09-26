@@ -1,5 +1,4 @@
 import * as React from "react";
-import styles from "./index.module.css";
 import logo from "../../public/logo.png";
 import { Context } from "../../context";
 import Cookies from "js-cookie";
@@ -88,7 +87,7 @@ export default function NavBar() {
 
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
-          <Toolbar className={styles.nav}>
+          <Toolbar sx={{ height: "50px" }}>
             <IconButton
               size="large"
               edge="start"
@@ -108,7 +107,7 @@ export default function NavBar() {
               Casper & NextJS
             </Typography>
             {mounted && (
-              <div className={styles.account}>
+              <div>
                 <Tooltip
                   title={
                     state.user ? `Public Key: ${state.user}` : "Signed out"

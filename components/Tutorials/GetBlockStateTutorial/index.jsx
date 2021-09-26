@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 // Components
 import { Alert, CodeBlock } from "../..";
 
-export default function GetBlockState({ open, setOpen }) {
+export default function GetBlockStateTutorial({ open, setOpen }) {
   return (
     <Alert
       open={open}

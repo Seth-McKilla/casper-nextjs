@@ -1,5 +1,4 @@
 import * as React from "react";
-import "../styles/globals.css";
 import { NavBar, Footer } from "../components";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "../theme";

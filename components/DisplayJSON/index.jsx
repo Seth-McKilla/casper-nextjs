@@ -11,7 +11,7 @@ const paperStyle = {
   marginBottom: "24px",
 };
 
-const theme = {
+const jsonTheme = {
   main: "line-height:1.3;color:#66d9ef;",
   error: "line-height:1.3;color:#66d9ef;",
   key: "color:#f92672;",
@@ -27,7 +27,7 @@ export default function DisplayJSON({ buttonName, loading, data }) {
       <JSONPretty
         id="json-pretty"
         data={loading ? "Loading..." : data || defaultMessage}
-        theme={theme}
+        theme={jsonTheme}
       />
     </Paper>
   );

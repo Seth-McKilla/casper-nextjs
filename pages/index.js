@@ -1,22 +1,18 @@
 import * as React from "react";
 import { Context } from "../context";
-import logo from "../public/logo.png";
-import styles from "../styles/Home.module.css";
 
 // Next
 import Head from "next/head";
-import Image from "next/image";
 import { useRouter } from "next/router";
 
 // Mui
 import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 // Components
-import { Alert } from "../components";
+import { Alert, Container, Logo } from "../components";
 
 export default function Home() {
   const router = useRouter();
@@ -30,14 +26,14 @@ export default function Home() {
   };
 
   return (
-    <Container className={styles.container} maxWidth="md">
+    <Container>
       <Head>
         <title>Casper & NextJS</title>
         <meta name="description" content="Casper and NextJS Example" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <Grid container spacing={3} align="center">
           <Alert
             open={showAlert}
@@ -51,16 +47,7 @@ export default function Home() {
             </Typography>
           </Alert>
 
-          <Grid item xs={12}>
-            <div className={styles.logo}>
-              <Image
-                width={250}
-                height={250}
-                src={logo}
-                alt="casper-nextjs-logo"
-              />
-            </div>
-          </Grid>
+          <Logo />
 
           <Grid item xs={12}>
             <Typography variant="h3">Casper & NextJS Demo</Typography>

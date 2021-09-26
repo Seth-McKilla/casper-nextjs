@@ -1,19 +1,17 @@
 import * as React from "react";
-import styles from "../styles/Home.module.css";
 
 // Next
 import Head from "next/head";
 
 // Mui
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 // Components
-import { DisplayJSON, GetBlockState } from "../components";
+import { Container, DisplayJSON, GetBlockStateTutorial } from "../components";
 
-export default function Intro() {
+export default function GetBlockState() {
   const [loading, setLoading] = React.useState(false);
   const [response, setResponse] = React.useState("");
   const [showTutorialSection, setShowTutorialSection] = React.useState(false);
@@ -35,14 +33,14 @@ export default function Intro() {
   };
 
   return (
-    <Container className={styles.container} maxWidth="md">
+    <Container>
       <Head>
         <title>Get block state</title>
         <meta name="description" content="Get the block state" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <GetBlockState
+      <GetBlockStateTutorial
         open={showTutorial}
         setOpen={() => setShowTutorial(false)}
       />

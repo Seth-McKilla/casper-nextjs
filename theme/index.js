@@ -12,4 +12,24 @@ export default createTheme({
       main: "#ECDBBA",
     },
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }  
+      a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 600;
+        color: #c84b31;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      `,
+    },
+  },
 });

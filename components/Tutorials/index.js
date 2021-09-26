@@ -1,1 +1,1 @@
-export { default as GetBlockState } from "./GetBlockState";
+export { default as GetBlockStateTutorial } from "./GetBlockStateTutorial";

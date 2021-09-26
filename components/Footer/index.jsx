@@ -1,9 +1,21 @@
 import * as React from "react";
-import styles from "./index.module.css";
+
+// Mui
+import Box from "@mui/material/Box";
+
+const styles = {
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  height: "50px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <Box sx={styles}>
       <div>
         Made with{" "}
         <span role="img" alt="heart">
@@ -18,6 +30,6 @@ export default function Footer() {
           Seth
         </a>
       </div>
-    </footer>
+    </Box>
   );
 }
