@@ -54,11 +54,11 @@ export default function Home() {
 
           <Grid item xs={12}>
             <Typography variant="h6">
-              Simply click one of the links at the top of this page{" "}
+              Click one of the links at the top of this page{" "}
               <span role="img" aria-label="Finger">
                 ☝️
               </span>{" "}
-              to start learning now!
+              to start learning some fundamentals now!
             </Typography>
           </Grid>
         </Grid>

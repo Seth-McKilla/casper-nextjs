@@ -2,18 +2,27 @@
 import { default as MuiContainer } from "@mui/material/Container";
 
 const styles = {
-  maxHeight: "calc(100vh - 115px)",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100vh",
+  root: {
+    overflowY: "auto",
+    width: "100vw",
+    height: "calc(100vh - 115px)",
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100vw",
+    height: "100vh",
+  },
 };
 
 export default function Container({ children }) {
   return (
-    <MuiContainer sx={styles} maxWidth="md">
-      {children}
-    </MuiContainer>
+    <div style={styles.root}>
+      <MuiContainer sx={styles.container} maxWidth="md">
+        {children}
+      </MuiContainer>
+    </div>
   );
 }

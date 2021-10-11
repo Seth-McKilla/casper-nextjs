@@ -11,6 +11,7 @@ const styles = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  boxShadow: 5,
 };
 
 export default function Footer() {

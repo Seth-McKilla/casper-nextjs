@@ -12,6 +12,7 @@ const stackStyles = {
   justifyContent: "center",
   position: "absolute",
   marginTop: "16px",
+  zIndex: 10,
 };
 
 export default function NavLinks() {

@@ -12,6 +12,7 @@ import {
   ButtonClick,
   Container,
   DisplayJSON,
+  GitHubLink,
   GetBlockStateTutorial,
 } from "../components";
 
@@ -91,6 +92,7 @@ export default function GetBlockState() {
             text="</> View Code"
             onClick={() => setShowTutorial(true)}
           />
+          <GitHubLink link="https://github.com/Seth-McKilla/casper-nextjs/blob/main/pages/api/get-block-state.js" />
         </Grid>
       </Grid>
     </Container>
