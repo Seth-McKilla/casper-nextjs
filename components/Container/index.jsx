@@ -8,12 +8,9 @@ const styles = {
     height: "calc(100vh - 115px)",
   },
   container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: "100px",
     width: "100vw",
-    height: "100vh",
+    height: "calc(100vh - 200px)",
   },
 };
 

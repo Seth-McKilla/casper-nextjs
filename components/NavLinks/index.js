@@ -16,7 +16,12 @@ const stackStyles = {
 };
 
 export default function NavLinks() {
-  const pages = ["signer-connect", "get-block-state", "update-string"];
+  const pages = [
+    "contract-setup",
+    "signer-connect",
+    "get-block-state",
+    "update-key-value",
+  ];
 
   return (
     <Stack direction="row" spacing={2} sx={stackStyles}>
