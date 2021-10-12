@@ -42,6 +42,8 @@ export default async function handler(req, res) {
       "hex"
     );
 
+    console.log(accountHash);
+
     const stateRootHash = await casperService.getStateRootHash();
 
     const accountInfo = await casperService.getBlockState(
@@ -50,9 +52,13 @@ export default async function handler(req, res) {
       []
     );
 
+    console.log(accountInfo);
+
     const { key } = _.find(accountInfo.Account.namedKeys, (i) => {
       return i.name === "kvstorage_contract";
     });
+
+    console.log(key);
 
     const contractHashAsByteArray = [...Buffer.from(key.slice(5), "hex")];
 
