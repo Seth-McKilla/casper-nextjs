@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 // Components
-import { Container, Logo } from "../components";
+import { Container, Logo, GitHubLink } from "../components";
 
 export default function Home() {
   return (
@@ -60,6 +60,28 @@ export default function Home() {
               </span>{" "}
               to start learning some fundamentals now!
             </Typography>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography variant="h6">
+              (P.S. Working your way from left to right is recommended)
+            </Typography>
+          </Grid>
+
+          <Grid
+            container
+            item
+            xs={12}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Typography variant="h6">
+              Check out the full repo here{" "}
+              <span role="img" aria-label="thumb-pointing-right">
+                👉
+              </span>{" "}
+            </Typography>
+            <GitHubLink link="https://github.com/Seth-McKilla/casper-nextjs" />
           </Grid>
         </Grid>
       </main>

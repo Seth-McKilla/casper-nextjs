@@ -23,8 +23,9 @@ export default function GetBlockStateTutorial() {
       <CodeBlock code={codeTextContract} language="rust" />
 
       <Typography variant="h6" gutterBottom>
-        Then we'll set up some tests by first deploying the contract with
-        initial values:
+        {
+          "Then we'll set up some tests by first deploying the contract with initial values:"
+        }
       </Typography>
 
       <CodeBlock code={codeTextSetupTests} language="rust" />

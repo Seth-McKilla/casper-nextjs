@@ -29,6 +29,12 @@ export default function SignerConnect() {
           </Grid>
 
           <Grid item xs={12}>
+            <Typography variant="h6" gutterBottom>
+              *** Note: This page is a work in progress ***
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12}>
             <Typography variant="h4" gutterBottom>
               Log into the CasperLabs Signer and connect it to this site in
               three easy steps:
@@ -96,22 +102,6 @@ export default function SignerConnect() {
               The padlock should now be unlocked and your public account key can
               be viewed by hovering over the padlock
             </Typography>
-          </Grid>
-
-          <Grid
-            container
-            item
-            xs={12}
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Typography variant="h5" mr={3}>
-              Check out how this was done!
-            </Typography>
-            <ButtonClick
-              text="</> View Code"
-              onClick={() => alert("WORK IN PROGRESS")}
-            />
           </Grid>
         </Grid>
       </main>

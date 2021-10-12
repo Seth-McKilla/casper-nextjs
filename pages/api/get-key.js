@@ -12,10 +12,10 @@ export default function handler(req, res) {
     const publicKeyInPem = edKeyPair.exportPublicKeyInPem();
     const privateKeyInPem = edKeyPair.exportPrivateKeyInPem();
 
-    const folder = path.join("./", "casper_keys");
+    const folder = path.join("./", "user_keys");
 
     if (!fs.existsSync(folder)) {
-      const tempDir = fs.mkdirSync(folder);
+      fs.mkdirSync(folder);
     }
 
     fs.writeFileSync(`${folder}/${accountAddress}_public.pem`, publicKeyInPem);

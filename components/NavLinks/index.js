@@ -18,9 +18,9 @@ const stackStyles = {
 export default function NavLinks() {
   const pages = [
     "contract-setup",
-    "signer-connect",
     "get-block-state",
     "update-key-value",
+    "signer-connect",
   ];
 
   return (

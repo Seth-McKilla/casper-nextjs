@@ -11,4 +11,8 @@ export { default as Logo } from "./Logo";
 export { default as NavBar } from "./NavBar";
 export { default as NavLinks } from "./NavLinks";
 
-export { SetupContractTutorial, GetBlockStateTutorial } from "./Tutorials";
+export {
+  SetupContractTutorial,
+  GetBlockStateTutorial,
+  UpdateValuesTutorial,
+} from "./Tutorials";

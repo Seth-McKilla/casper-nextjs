@@ -27,12 +27,11 @@ export default function GetBlockState() {
       const response = await fetch("/api/get-block-state");
       const { blockState } = await response.json();
       setResponse(JSON.stringify(blockState));
-      return setLoading(false);
     } catch (err) {
       console.log(err);
       setResponse(JSON.stringify(err.message));
-      return setLoading(false);
     }
+    return setLoading(false);
   };
 
   return (
@@ -53,29 +52,38 @@ export default function GetBlockState() {
           <Typography variant="h2">Get Block State</Typography>
         </Grid>
 
-        <Grid
-          container
-          item
-          xs={12}
-          justifyContent="space-around"
-          alignItems="center"
-        >
-          <Typography variant="h5">
-            {"Let's start off by fetching the current block state..."}
-          </Typography>
-          <ButtonClick
-            text={loading ? "Loading..." : "Fetch block state"}
-            onClick={handleClick}
-            disabled={loading}
-          />
+        <Grid item xs={12}>
+          <Grid container justifyContent="space-around" alignItems="center">
+            <Grid item xs={9}>
+              <Typography variant="h5">
+                {
+                  "Check out the current block state of the contract created in the 'Contract Setup' section..."
+                }
+              </Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <ButtonClick
+                text={loading ? "Loading..." : "Fetch block state"}
+                onClick={handleClick}
+                disabled={loading}
+              />
+            </Grid>
+          </Grid>
         </Grid>
 
         <Grid item xs={12}>
           <DisplayJSON
-            buttonName="Get Block State"
+            buttonName="Fetch Block State"
             loading={loading}
             data={response}
           />
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant="h5">
+            As you can see after fetching the state, the three entry points for
+            updating the key-value items can be seen in the block state above.
+          </Typography>
         </Grid>
 
         <Grid

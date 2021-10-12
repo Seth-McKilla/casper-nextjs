@@ -8,12 +8,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 // Components
-import {
-  ButtonClick,
-  Container,
-  SetupContractTutorial,
-  GitHubLink,
-} from "../components";
+import { Container, SetupContractTutorial, GitHubLink } from "../components";
 
 export default function GetBlockState() {
   return (
